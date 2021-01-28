@@ -23,7 +23,21 @@ puts Date.civil(2016, 5, 13)
 2016-05-01
 2016-05-13
 
+#Q3 Consider the following:
 
+def my_method(a, b = 2, c = 3, d)
+  p [a, b, c, d]
+end
 
+my_method(4, 5, 6)
 
+[4,5,3,6]
 
+#Q4 The Array#bsearch is used to search ordered Arrays more quickly than #find and #select
+# Assume the following:
+a = [1, 4, 8, 11, 15, 19]
+#how would you searhc this array to find the first value that is greater than 8 ?
+
+# https://ruby-doc.org/core-2.6.3/Array.html#method-i-bsearch
+
+a.bsearch{|x| x > 8}
