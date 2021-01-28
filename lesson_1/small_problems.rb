@@ -67,3 +67,18 @@ puts s.public_methods.inspect
 
 # how would you exclude methods ineherited from Object, BasicObject, and Kernel ?
 puts s.public_methods(false).inspect 
+
+
+#Q8 Run this in irb:
+a = [5, 9, 3, 11]
+puts a.min
+
+#SOLUTION 
+puts a.min(2)
+
+#Q9 Sometimes, the documentation is going to leave you scratching your head. 
+# In a very early assignment you were tasked with writing a program that loads some text from a YAML file. 
+# We do this with YAML::load_file
+require 'yaml'
+MESSAGES = YAML.load_file('calculator_messages.yml')
+# https://ruby-doc.org/stdlib-3.0.0/libdoc/psych/rdoc/Psych.html#method-c-load_file
