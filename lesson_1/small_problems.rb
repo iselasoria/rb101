@@ -41,3 +41,29 @@ a = [1, 4, 8, 11, 15, 19]
 # https://ruby-doc.org/core-2.6.3/Array.html#method-i-bsearch
 
 a.bsearch{|x| x > 8}
+
+#Q5 what does each statement puts?
+
+a = %w(a b c d e)
+puts a.fetch(7)
+puts a.fetch(7, 'beats me')
+puts a.fetch(7) { |index| index**2 }
+# https://ruby-doc.org/core-2.6.3/Array.html#method-i-fetch
+
+# ['a','b','c','d','e']
+# IndexError
+# "beats me"
+# 49
+
+#Q6 what does this code print?
+5.step(to: 10, by: 3) { |value| puts value }
+
+# 5, 8
+# 10 is the threshold  so it breaks the loop, and we increment by 3 in each iteration
+
+#Q7 input into irb
+s = 'abc'
+puts s.public_methods.inspect
+
+# how would you exclude methods ineherited from Object, BasicObject, and Kernel ?
+puts s.public_methods(false).inspect 
