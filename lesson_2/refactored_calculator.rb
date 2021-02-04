@@ -8,36 +8,62 @@ def valid_number?(num)
   num.to_i != 0
 end 
 
-prompt("Welcome to calculator!")
+prompt("Welcome to calculatorEnter your name: ")
 
-number1 = ''
+name = ''
 loop do 
-  prompt("What is the first number?")
-  number1 = Kernel.gets().chomp()
-
-  if valid_number?(number1)
-    break
+  name = Kernel.gets().chomp()
+  if name.empty?()
+    promtp("Make sure to use a valid name.")
   else
-    prompt("Hmm.. that doesn't look like a valid number.")
-  end 
+    break
+  end
 end 
 
+prompt("Hi #{name}")
 
-number2 = ''
 loop do 
-  prompt("What is the second number?")
-  number2 = Kernel.gets().chomp()
 
-  if valid_number?(number2)
-    break
-  else
-    promt("Hmm.. that doesn't look like a valid numbers.")
+  number1 = ''
+  loop do 
+    prompt("What is the first number?")
+    number1 = Kernel.gets().chomp()
+
+    if valid_number?(number1)
+      break
+    else
+      prompt("Hmm.. that doesn't look like a valid number.")
+    end 
   end 
-end
+
+
+  number2 = ''
+  loop do 
+    prompt("What is the second number?")
+    number2 = Kernel.gets().chomp()
+
+    if valid_number?(number2)
+      break
+    else
+      promt("Hmm.. that doesn't look like a valid number.")
+    end 
+  end
 
 prompt("What operation would you like to perform? 1)add 2)subtracrt 3)multiply 4)divide")
 
+  
+
 operator = Kernel.gets().chomp()
+
+loop do 
+  operator = Kernel.gets().chomp()
+  if %w(1 2 3 4).include?(operator)
+    break
+  else 
+    prompt("must include 1 2 3 or 4")
+  end
+end
+  
 
 result = case operator 
          when '1'
@@ -52,3 +78,10 @@ end
 
 
 prompt("The result is: #{result}")
+
+prompt("Do you want to perform another calculation?")
+answer = Kernel.gets().chomp()
+break unless answer.downcase().start_with?('y')
+end 
+
+prompt("Thank you for using the calculator!")
