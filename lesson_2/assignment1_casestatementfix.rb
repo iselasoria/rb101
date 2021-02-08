@@ -19,16 +19,19 @@ def valid_number?(num)
 end 
 
 def operation_to_message(op)
-  case op
-  when '1'
-    "Adding"
-  when '2'
-    "Subtracting"
-  when '3'
-    "Multiplying"
-  when '4'
-    "Dividing"
-  end
+operation_completed =   case op
+                        when '1'
+                          "Adding"
+                        when '2'
+                          "Subtracting"
+                        when '3'
+                          "Multiplying"
+                        when '4'
+                          "Dividing"
+                        end
+                        x = "Adding random line for testing"
+
+                        operation_completed
 end
 
 prompt("Welcome to calculatorEnter your name: ")
