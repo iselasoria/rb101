@@ -1,3 +1,4 @@
+en: 
 welcome : "Welcome to calculator. Enter your name: "
 valid_name: "Make sure to use a valid name."
 greeting_personalized: "Hi #{name}"
@@ -24,4 +25,21 @@ thanks: "Thank you for using the calculator!"
 # happening_now does not make use of string interpolation
 # result does not make use of string interpolation
 
+es: 
+welcome: "Bienvenido a la calculadora."
+valid_name: "Asegurate de ingresar un nombre valido."
+greeting_personalized: "Hola #{name}"
+firstnum: "Cual es tu primer numero?"
+secondnum: "Cual es tu segundo numero?"
+invalid_num: "El numero que ingresaste no es valido, ingresa otro: "
+opperation: <<- MSG
+      Que operacion quieres realizar?
+      1) sumar
+      2) restar
+      3) multiplicar
+      4) dividir
+MSG
 
+checkop: "Debes elegir de los numero 1, 2, 3 o 4"
+anotherone: "Quieres realizar otra operacion?"
+thanks: "Gracias por usar la calculadora."
