@@ -1,0 +1,27 @@
+welcome : "Welcome to calculator. Enter your name: "
+valid_name: "Make sure to use a valid name."
+greeting_personalized: "Hi #{name}"
+firstnum: "What is the first number?"
+secondnum: "What is the second number?"
+invalid_num: "Hmm.. that doesn't look like a valid number."
+opperation: <<-MSG
+    What operation would you like to perform?
+    1) add
+    2) subtract
+    3) multiply
+    4) divide
+
+  MSG
+
+checkop: "must include 1 2 3 or 4"
+
+happeningnow: "#{operation_to_message(operator)} the two numbers..."
+theresult: "The result is: #{result}"
+anotherone: "Do you want to perform another calculation?"
+thanks: "Thank you for using the calculator!"
+
+#TODO- opperation message does not display in mumltiline
+# happening_now does not make use of string interpolation
+# result does not make use of string interpolation
+
+
