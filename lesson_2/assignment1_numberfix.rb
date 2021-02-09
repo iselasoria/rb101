@@ -59,7 +59,7 @@ loop do
     if valid_number?(number2)
       break
     else
-      promt("Hmm.. that doesn't look like a valid number.")
+      prompt("Hmm.. that doesn't look like a valid number.")
     end
   end
 
