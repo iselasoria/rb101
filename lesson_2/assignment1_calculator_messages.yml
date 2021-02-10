@@ -1,4 +1,3 @@
-en: 
 welcome : "Welcome to calculator. Enter your name: "
 valid_name: "Make sure to use a valid name."
 greeting_personalized: "Hi #{name}"
@@ -6,13 +5,13 @@ firstnum: "What is the first number?"
 secondnum: "What is the second number?"
 invalid_num: "Hmm.. that doesn't look like a valid number."
 opperation: <<-MSG
-    What operation would you like to perform?
-    1) add
-    2) subtract
-    3) multiply
-    4) divide
-
-  MSG
+      What operation would you like to perform?
+      1) add
+      2) subtract
+      3) multiply
+      4) divide
+ 
+    MSG
 
 checkop: "must include 1 2 3 or 4"
 
@@ -21,25 +20,6 @@ theresult: "The result is: #{result}"
 anotherone: "Do you want to perform another calculation?"
 thanks: "Thank you for using the calculator!"
 
-#TODO- opperation message does not display in mumltiline
-# happening_now does not make use of string interpolation
-# result does not make use of string interpolation
-
-es: 
-welcome: "Bienvenido a la calculadora."
-valid_name: "Asegurate de ingresar un nombre valido."
-greeting_personalized: "Hola #{name}"
-firstnum: "Cual es tu primer numero?"
-secondnum: "Cual es tu segundo numero?"
-invalid_num: "El numero que ingresaste no es valido, ingresa otro: "
-opperation: <<- MSG
-      Que operacion quieres realizar?
-      1) sumar
-      2) restar
-      3) multiplicar
-      4) dividir
-MSG
-
-checkop: "Debes elegir de los numero 1, 2, 3 o 4"
-anotherone: "Quieres realizar otra operacion?"
-thanks: "Gracias por usar la calculadora."
+  #TODO- opperation message does not display in mumltiline
+  # happening_now does not make use of string interpolation
+  # result does not make use of string interpolation
