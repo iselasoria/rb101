@@ -14,11 +14,11 @@ end
 
 def valid_float?(num)
   num.to_f.to_s == num
-end 
+end
 
 def valid_number?(num)
   valid_int?(num) || valid_float?(num)
-end 
+end
 
 def operation_to_message(op)
 operation_completed =   case op
@@ -50,7 +50,7 @@ end
 
 prompt("Hi #{name}")
 
-loop do 
+loop do
 
   number1 = ''
   loop do 
