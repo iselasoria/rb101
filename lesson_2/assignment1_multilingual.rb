@@ -1,11 +1,16 @@
 ################# assignment 1 ############# Q4
-LANGUAGE='en'
+LANGUAGE='es'
 require 'yaml'
-MESSAGES = YAML.load_file('/Users/rosasoria/Documents/LS/rb101/lesson_2/assignment1_calculator_messages.yml')
-#puts MESSAGES.inspect
+MESSAGES = YAML.load_file('/Users/rosasoria/Documents/LS/rb101/lesson_2/assignment1_calculator_messages_es.yml')
+# puts MESSAGES.inspect
 # now we will refactor
+def messages(message, lang='es')
+  MESSAGES[lang][message]
+end
 
-def prompt(message)
+
+def prompt(key)
+  message = messages(key, LANGUAGE)
   Kernel.puts("=> #{message}")
 end
 
@@ -37,18 +42,14 @@ operation_completed =   case op
                         operation_completed
 end
 
-def messages(message, lang='en')
-  MESSAGES[lang][message]
-end
-
 #prompt(MESSAGES['welcome'])
-prompt(messages('welcome'))
+prompt('welcome')
 
 name = ''
 loop do
   name = Kernel.gets().chomp()
   if name.empty?()
-    promtp(MESSAGES['valid_name'])
+    promtp('valid_name')
   else
     break
   end
@@ -60,31 +61,31 @@ loop do
 
   number1 = ''
   loop do 
-    prompt(MESSAGES['firstnum'])
+    prompt('firstnum')
     number1 = Kernel.gets().chomp()
 
     if valid_number?(number1)
       break
     else
-      prompt(MESSAGES['invalid_num'])
+      prompt('invalid_num')
     end
   end
 
   number2 = ''
   loop do
-    prompt(MESSAGES['secondnum'])
+    prompt('secondnum')
     number2 = Kernel.gets().chomp()
 
     if valid_number?(number2)
       break
     else
-      promt(MESSAGES['invalid_num'])
+      promt('invalid_num')
     end
   end
 
-  operator_prompt = MESSAGES['opperation']
+  #operator_prompt = 'opperation'
   
-  prompt(operator_prompt)
+  prompt('opperation')
 
 operator = ''
 loop do
@@ -92,7 +93,7 @@ loop do
   if %w(1 2 3 4).include?(operator)
     break
   else
-    prompt(MESSAGES['checkop'])
+    prompt('checkop')
   end
 end
 
@@ -111,9 +112,12 @@ result = case operator
 
 prompt("The result is: #{result}")
 
-prompt(MESSAGES['anotherone'])
+prompt('anotherone')
 answer = Kernel.gets().chomp()
 break unless answer.downcase().start_with?('y')
 end
 
-prompt(MESSAGES['thanks'])
+prompt('thanks')
+
+
+##the last issue remaining is the case statement in the opperation and then result
