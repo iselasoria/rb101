@@ -3,9 +3,9 @@
 
 
 def validamount?(amount)
-  amount.to_i.to_s == amount && amount > 0
+  amount.to_i.to_s == amount && amount.to_i > 0
 end
-puts validamount?(400)
+#puts validamount?(400)
 
 loop do 
   puts "How much money do you need to borrow?"
