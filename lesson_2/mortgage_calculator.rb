@@ -1,11 +1,13 @@
 #### assignment: mortgage calculator #####
 
+
 def prompt(message)
   puts "=> #{message}"
 end
 
 def validamount?(amount)
   amount.to_i.to_s == amount && amount.to_i > 20000
+  amount.to_i 
 end
 
 def validtimeframe?(timeframe)
@@ -23,7 +25,8 @@ def monthly_rate(apruser)
 end
 
 def monthly_payment(amount, monthly_rate, months)
-  amount * (monthly_rate / (1 - (1 + monthly_rate)**(-months)))
+  bill = amount * (monthly_rate / (1 - (1 + monthly_rate)**(-months)))
+  bill
 end
 
 loop do
@@ -52,7 +55,7 @@ loop do
 
   apr_raw = ''
   loop do
-    prompt("Enter your APR in the integer format or decimals")
+    prompt("Enter your APR: ")
     apr_raw = gets().chomp()
     if validrate?(apr_raw)
       break
@@ -62,12 +65,17 @@ loop do
   end
 
   months = years.to_i * 12
+  borrowed = borrowed.to_i
+  apr_raw = apr_raw.to_i 
+
   puts "Your loan will be for #{months} months. Hang tight, we're calculating your monthly rate."
   sleep(3)
 
   prompt("Your monthly rate is: #{(monthly_rate(apr_raw)).round(3)}. Calculating your monthly mortgage.")
+  sleep(2)
 
-  prompt("You can expect to pay $#{monthly_payment(borrowed, monthly_rate(apr_raw), months)} per month.")
+  prompt("You can expect to pay $#{monthly_payment(borrowed, monthly_rate(apr_raw), months).round(2)} per month.")
+  
   prompt("Do you wish to run another scenario?")
   another = gets().chomp()
   break unless another.downcase().start_with?('y')
