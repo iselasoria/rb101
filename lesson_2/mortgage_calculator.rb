@@ -1,4 +1,6 @@
 #### assignment: mortgage calculator #####
+require "yaml"
+MESSAGES = YAML.load_file('/Users/rosasoria/Documents/LS/rb101/lesson_2/mortgage_messages.yml')
 
 
 def prompt(message)
@@ -32,41 +34,41 @@ end
 loop do
   borrowed = ''
   loop do
-    prompt("How much money do you need to borrow?")
+    prompt(MESSAGES['money_needed'])
     borrowed = gets().chomp()
 
     if validamount?(borrowed)
       break
     else
-      prompt("Please enter a valid amount: ")
+      prompt(MESSAGES['invalid_num'])
     end
   end
 
   years = ''
   loop do
-    prompt("How many years do you want your loan to be?")
+    prompt(MESSAGES['time'])
     years = gets().chomp()
     if validtimeframe?(years)
       break
     else
-      prompt("Your timeframe should be more than 7 years and fewer than 30.")
+      prompt(MESSAGES['invalid_time'])
     end
   end
 
   apr_raw = ''
   loop do
-    prompt("Enter your APR: ")
+    prompt(MESSAGES['apr'])
     apr_raw = gets().chomp()
     if validrate?(apr_raw)
       break
     else
-      prompt("Please enter a valid APR: ")
+      prompt(MESSAGES['invalid_apr'])
     end
   end
 
   months = years.to_i * 12
   borrowed = borrowed.to_i
-  apr_raw = apr_raw.to_i 
+  apr_raw = apr_raw.to_f
 
   puts "Your loan will be for #{months} months. Hang tight, we're calculating your monthly rate."
   sleep(3)
@@ -76,9 +78,9 @@ loop do
 
   prompt("You can expect to pay $#{monthly_payment(borrowed, monthly_rate(apr_raw), months).round(2)} per month.")
   
-  prompt("Do you wish to run another scenario?")
+  prompt(MESSAGES['again'])
   another = gets().chomp()
   break unless another.downcase().start_with?('y')
 end
 
-prompt("Thanks for using the mortgage calculator, come back again anytime!")
+prompt(MESSAGES['thanks_comeagain'])

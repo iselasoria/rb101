@@ -1,0 +1,8 @@
+money_needed: "How much money do you need to borrow?"
+invalid_num: "Please enter a valid amount: "
+time:  "How many years do you want your loans to be?"
+invalid_time: "Your timeframe should be more than 7 years and fewer than 30."
+apr : "Enter your APR: "
+invalid_apr: "Please enter a valid APR: "
+again: "Do you wish to run another scenario?"
+thanks_comeagain: "Thanks for using the mortgage calculator, come back again anytime!"
