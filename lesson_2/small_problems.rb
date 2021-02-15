@@ -166,3 +166,6 @@ end
 
 puts bonus(400000,true)
 puts bonus(400000,false)
+
+######### EASY 2 #########
+
