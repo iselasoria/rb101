@@ -18,7 +18,8 @@ def validtimeframe?(timeframe)
 end
 
 def validrate?(myrate)
-  myrate.to_i.to_s == myrate || myrate.to_f.to_s == myrate
+  #myrate.to_i.to_s == myrate || myrate.to_f.to_s == myrate && myrate.to_i > 0 || myrate.to_f > 0
+  myrate.to_f.to_s == myrate && myrate.to_f > 0
 end
 
 def monthly_rate(apruser)
