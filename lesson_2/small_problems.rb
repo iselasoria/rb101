@@ -131,4 +131,38 @@ def avg(arr)
 end
 puts avg([10,3,8])
 
+#Q9 Write a method that takes one argument, a positive integer, and returns a sum of its digits.
 
+def sum(number)
+  sum = 0
+  string_num = number.to_s.chars
+  string_num.each do |digit|
+    sum += digit.to_i
+  end
+  sum
+end
+
+puts sum(2345)
+
+#Q10 Write a method that takes two arguments, a positive integer and a boolean, and calculates the bonus for a given salary.
+# if the boolean is true, the bonus should be half of the salary. If false, the bonus should be zero.
+
+def bonus(salary, qualify)
+  if qualify == true
+    bonus = salary / 2
+    bonus
+  else
+    bonus = 0 
+  end
+end
+
+p bonus(15000, true)
+p bonus(15000, false)
+
+#refactored code:
+def bonus(salary, bonus)
+  bonus ? (salary / 2) : 0
+end 
+
+puts bonus(400000,true)
+puts bonus(400000,false)
