@@ -2,7 +2,6 @@
 require "yaml"
 MESSAGES = YAML.load_file('/Users/rosasoria/Documents/LS/rb101/lesson_2/mortgage_messages.yml')
 
-
 def prompt(message)
   puts "=> #{message}"
 end
@@ -14,12 +13,14 @@ end
 
 def validtimeframe?(timeframe)
   timeframe.to_i.to_s == timeframe &&
-  (timeframe.to_i >= 7 && timeframe.to_i <= 30)
+    (timeframe.to_i >= 7 && timeframe.to_i <= 30)
 end
 
 def validrate?(myrate)
-  #myrate.to_i.to_s == myrate || myrate.to_f.to_s == myrate && myrate.to_i > 0 || myrate.to_f > 0
-  myrate.to_f.to_s == myrate && myrate.to_f > 0
+  (myrate.to_i.to_s == myrate && myrate.to_i > 0) || (myrate.to_f.to_s == myrate && myrate.to_f > 0)
+  #myrate.to_i.to_s == myrate || myrate.to_f.to_s == myrate && 
+    #(myrate.to_i > 0 && myrate.to_f > 0)
+  # myrate.to_f.to_s == myrate && myrate.to_f > 0
 end
 
 def monthly_rate(apruser)
@@ -78,7 +79,7 @@ loop do
   sleep(2)
 
   prompt("You can expect to pay $#{monthly_payment(borrowed, monthly_rate(apr_raw), months).round(2)} per month.")
-  
+
   prompt(MESSAGES['again'])
   another = gets().chomp()
   break unless another.downcase().start_with?('y')
