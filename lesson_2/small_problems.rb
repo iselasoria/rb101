@@ -73,14 +73,62 @@ puts count_occurrences(vehicles)
 #Q5 Write a method that takes one argument, a string, and returns the words in reverse order
 
 def reverseme(mystr)
-  reversed_sentence=''
-  index = 0
-  while index < mystr.length
-    puts index
-    #eversed_sentence = mystr[index] #+ reversed_sentence
-    index += 1
-  end 
-  return reversed_sentence
+  mystr.split.reverse.join(' ')
 end 
 
 puts reverseme("The grey cat sat by the window.")
+
+# Q6 Write a method that takes one arguments, a strnig containign one or more words, and returns the given string with words that contain five
+# or more characters reversed. Each string will consist of only letters and spaces. Spaces should be included only when more than one words in present.
+def reverseme(mystr)
+  words = []
+    mystr.split.each do |word|
+      word.reverse! if word.size >=5 
+      words << word 
+    end
+    words.join(' ')
+end 
+
+puts reverseme("The grey cat sat by the window.")
+
+# Q7 Writre a method that takes one arg, a positive integer, and returns a string of alternating 1s and 0s, always starting with 1. The lengths should match the integer given.
+# puts stringy(6) == '101010'
+# PEDAC#
+# Problem
+## define a method that takes an integer as argument.
+## returns a string of alternating 1s and 0s.
+## string must start with 1
+## string legth is the value of integer param
+# Example
+## 
+
+# Data Structures
+## starts with an integer
+## some sort of iteration to print the items based on value of string
+## potentially the fence algo?
+# Algorithm
+## take the number passed as param and use it to guide the iteration
+## print 1 and 0 for the length of the number in param
+
+def stringy(my_int)
+  numbers = []
+  my_int.times do |item|
+    number = item.even? ? 1 : 0
+    numbers << number
+  end
+  numbers.join
+end 
+
+# Q8
+# write a method that takes an array and returns the sum of the numbers in that array.
+def avg(arr)
+  sum = 0 
+  arr.each do |num|
+    sum = sum + num
+  end
+  avg = (sum/arr.size)
+  avg
+end
+puts avg([10,3,8])
+
+
