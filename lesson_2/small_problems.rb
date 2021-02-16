@@ -169,3 +169,115 @@ puts bonus(400000,false)
 
 ######### EASY 2 #########
 
+#Q1 How old is Teddy? Build a program that randomyl generates and prints Teddy's age. Age should be between 20 and 200.
+
+def age()
+  teddy = rand(20..200)
+  p "Teddy is #{teddy} years old!"
+end
+
+#modify to ask for name and default to teddy
+
+def age(who="Teddy")
+  puts "Enter a name: "
+  name = gets.chomp()
+  age = rand(20..200)
+  p "#{name} is #{age} years old."
+end
+
+age()
+
+# Q2 How big is the room? Build a program that asks a user to the length and width of a room in 
+# meters and then displays teh area opf the room in both square feet and suare feet.
+
+puts "Enter the length of the room in meters: "
+length = gets.chomp.to_f
+puts "Enter the width of the room in meters: "
+width = gets.chomp.to_f
+
+area_sqm = (length * width)
+area_sqft = area_sqm * 10.7639 
+
+puts "The area is #{area_sqm.round(2)} square meters or #{area_sqft.round(2)} square feet."
+
+
+#Q3 Create a simple tip calculator. The program shjould prompt for a bill and a tip rate. 
+# The program must compute the tip and then display both the tip and the total amount.
+
+puts "What is the bill?"
+bill = gets.chomp.to_f
+puts "What is the tip?"
+tip = gets.chomp.to_f
+calc_tip = (bill * tip/100)
+calc_bill = bill + calc_tip
+
+puts "The tip is: #{calc_tip}."
+puts "The total is #{calc_bill}."
+
+#Q4 Build a program that displays when the user will reture and how many years she has to work till retirement.
+puts "What is your age: "
+curent_age = gets.chomp.to_i
+puts "At what age would you like to retire?"
+retirement_age = gets.chomp.to_i
+left = retirement_age - curent_age
+
+t = Time.new()
+current_year = t.year
+retirement_year = current_year + left
+
+puts <<-MSG
+  It is #{current_year}. You will retire in #{retirement_year}.
+  You have only #{left} years of work to go.
+MSG
+
+#Q5 Write a program that will ask the user for a name. The program will then greet the user, if the user gives name! then the computer yells back at the user
+
+puts "What is your name?"
+name = gets.chomp
+if name.include?("!")
+  puts "HELLO #{name.upcase} WHY ARE YOU SCREAMING?"
+else
+  puts "Hello, #{name}."
+end
+
+#Q6 print all odd numbers from 1 to 99, inclusive each on a separate line.
+val = 1
+while val <= 99 
+  puts val
+  val += 2
+end 
+
+#Q7 Print all even numbers from 1 to 99 inclusive, each on a separate line.
+
+val = 1
+while val <= 99
+  puts val if val.even?
+  val += 1
+end
+
+#Q8 Write a program that asks the user to enter an integer greater than 0, then asks if the user wants 
+#to determine the sum or product of all numbers between 1 and the entered integer.
+
+def sum(number)
+  total = 0
+  1.upto(number) {|value| total+= value}
+  total
+end
+
+def product(number)
+  total = 1
+  1.upto(number) {|value| total *= value}
+  total
+end 
+
+
+puts "Enter an integer greater than 0: "
+my_int = gets.chomp.to_i
+puts "Do you want to add or multiply the numbers from 1 to #{my_int}."
+computation = gets.chomp
+
+if computation == "multiply"
+  puts "The product of the integers between 1 and #{my_int} is #{product(my_int)}"
+elsif computation == "add"
+  puts "The product of the integers between 1 and #{my_int} is #{sum(my_int)}"
+end
