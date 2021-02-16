@@ -281,3 +281,28 @@ if computation == "multiply"
 elsif computation == "add"
   puts "The product of the integers between 1 and #{my_int} is #{sum(my_int)}"
 end
+
+#Q9 consider the following code:
+name = 'Bob'
+save_name = name
+name = 'Alice'
+puts name, save_name
+# what does the following print. Explain:
+
+name = 'Bob'
+save_name = name
+name.upcase!
+puts name, save_name
+# this prints BOB and BOB on a second line. This is because of the bang, it mutates the 
+# string and when we go to the top to look at name again, we find it is now upcase.
+
+#Q10 what will the following code print?
+
+array1 = %w(Moe Larry Curly Shemp Harpo Chico Groucho Zeppo)
+array2 = []
+array1.each { |value| array2 << value }
+array1.each { |value| value.upcase! if value.start_with?('C', 'S') }
+puts array2
+# we end up with Moe
+# [Larry,CURLY, SHEMP, Harpo, CHICO, Groucho, Zeppo]
+# even though we only changed array1, since array2 referfenced array1 it also carries its changed.
