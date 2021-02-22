@@ -34,13 +34,25 @@ second = gets.chomp.to_i
 addition = first + second
 puts "#{first} + #{second} = #{addition}"
 subtraction = first - second
-puts "#{first} + #{second} = #{subtraction}"
+puts "#{first} - #{second} = #{subtraction}"
 product = first * second
-puts "#{first} + #{second} = #{product}"
+puts "#{first} * #{second} = #{product}"
 quotient = first / second
-puts "#{first} + #{second} = #{quotient}"
+puts "#{first} / #{second} = #{quotient}"
 remainder = first % second
-puts "#{first} + #{second} = #{remainder}"
+puts "#{first} % #{second} = #{remainder}"
 power = first ** second
-puts "#{first} + #{second} = #{power}"
+puts "#{first} ** #{second} = #{power}"
 
+#Q3 Write a program that will ask a user for input of a word or multiple words and give back the number of chars.
+# spaces are not to be counted as char.
+
+puts "Please enter a word or words: "
+answer = gets.chomp
+characters = answer.delete(' ').size
+puts "The number of characters in #{answer} is #{characters}."
+
+#Q4 Create a method that takes two arguments, multiplies them togetherm and returns the result. 
+def multiply(first, second)
+  first * second
+end
