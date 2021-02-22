@@ -56,3 +56,14 @@ puts "The number of characters in #{answer} is #{characters}."
 def multiply(first, second)
   first * second
 end
+
+#Q5 Using the previous method, write a method that computes the square of its argument.
+def square(first)
+  multiply(first, first)
+end
+
+#Q6 Write a method that returns the exclusive of two arguments. It returns true if exaclty one of its argumentsd is truthy
+# false, otherwise. We're looig for boolean values.
+
+def xor?(val1, val2)
+  return true if val1 && val
