@@ -66,4 +66,7 @@ end
 # false, otherwise. We're looig for boolean values.
 
 def xor?(val1, val2)
-  return true if val1 && val
+  return true if val1 && !val2
+  return true if val2 && !val1
+  false
+end
