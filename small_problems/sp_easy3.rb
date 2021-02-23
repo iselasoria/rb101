@@ -70,3 +70,15 @@ def xor?(val1, val2)
   return true if val2 && !val1
   false
 end
+
+#Q7 Write a method thatretuns an array that contains every other element in an array that is passed in as an arg.
+# the values in the returned list should be those values that are in the 1st, 3rd, 5th and so on elements of an array.
+def oddities()
+
+end
+
+myarr = [1,2,3,4,5,6]
+
+myarr.each do 
+  |item| puts item
+end 
