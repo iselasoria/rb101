@@ -36,17 +36,20 @@ end
 
 # we need to tally up
 def tally(wincheck)
-  user = 0
-  computer = 0
-    if wincheck == "user_won"
-      user += 1
-    elsif wincheck == "computer_won"
-      computer += 1
-    end
+  if wincheck == "user_won"
+    user += 1
+  elsif wincheck == "computer_won"
+    computer += 1
+  else
+    tie += 1
+  end
   puts "User: #{user}"
   puts "Computer: #{computer}"
 end
 
+user = 0
+computer = 0
+tie = 0
 loop do
   choice = ''
   loop do
@@ -63,11 +66,12 @@ loop do
   prompt("You chose: #{choice}. Computer chose: #{computer_choice}")
 
 
-  puts display_result(choice, computer_choice)
+  display_result(choice, computer_choice)
 
 
   prompt("Do you want to play again?")
   answer = gets.chomp
+  tally(display_result(choice, computer_choice))
   break unless answer.downcase.start_with?('y')
   #puts "EMPTY LINE"
   #puts tally(display_result(choice, computer_choice))
