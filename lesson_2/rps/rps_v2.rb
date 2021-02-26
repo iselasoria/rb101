@@ -36,6 +36,9 @@ end
 
 # we need to tally up
 def tally(wincheck)
+user = 0
+computer = 0
+tie = 0
   if wincheck == "user_won"
     user += 1
   elsif wincheck == "computer_won"
@@ -66,7 +69,17 @@ loop do
   prompt("You chose: #{choice}. Computer chose: #{computer_choice}")
 
 
-  display_result(choice, computer_choice)
+  #display_result(choice, computer_choice)
+
+  if display_result(choice, computer_choice) == "user_won"
+    user += 1
+  elsif display_result(choice, computer_choice) == "computer_won"
+    computer += 1
+  end
+
+  puts "User: #{user}"
+  puts "Computer: #{computer}"
+
 
 
   prompt("Do you want to play again?")
