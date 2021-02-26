@@ -5,8 +5,8 @@ def prompt(message)
 end
 
 def win?(player, comp)
-  userwins = 0
-  computerwins = 0
+  #userwins = 0
+  #computerwins = 0
   scores = {
           rock: ['scissors', 'lizard'],
           paper: ['rock', 'spock'],
@@ -15,20 +15,22 @@ def win?(player, comp)
           spock: ['scissors', 'rock']
   }
   if scores[player.to_sym].include? comp.to_sym.to_s
-    return "user_won"
+    return true
   else
-    return "computer_won"
+    false
   end
 end
 
-# not sure how to handle this yet
 def display_result(player, computer)
   if win?(player, computer)
     prompt("You won!")
+    return "user_won"
   elsif win?(computer, player)
     prompt("Computer won!")
+    return "computer_won"
   else
     prompt("It's a tie!")
+    return "tie"
   end
 end
 
@@ -38,7 +40,7 @@ def tally(wincheck)
   computer = 0
     if wincheck == "user_won"
       user += 1
-    else
+    elsif wincheck == "computer_won"
       computer += 1
     end
   puts "User: #{user}"
@@ -60,11 +62,15 @@ loop do
 
   prompt("You chose: #{choice}. Computer chose: #{computer_choice}")
 
-  display_result(choice, computer_choice)
+
+  puts display_result(choice, computer_choice)
+
 
   prompt("Do you want to play again?")
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
+  #puts "EMPTY LINE"
+  #puts tally(display_result(choice, computer_choice))
 end
 
 prompt("Thank you for playing, good bye!")
