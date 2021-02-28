@@ -5,13 +5,13 @@ def prompt(message)
 end
 
 def win?(player, comp)
-  #userwins = 0
-  #computerwins = 0
+  # userwins = 0
+  # computerwins = 0
   scores = {
           rock: ['scissors', 'lizard'],
           paper: ['rock', 'spock'],
           scissors: ['lizard', 'paper'],
-          lizard: ['paper','spock'],
+          lizard: ['paper', 'spock'],
           spock: ['scissors', 'rock']
   }
   if scores[player.to_sym].include? comp.to_sym.to_s
@@ -34,20 +34,13 @@ def display_result(player, computer)
   end
 end
 
-# we need to tally up
-def tally(wincheck)
-user = 0
-computer = 0
-tie = 0
-  if wincheck == "user_won"
-    user += 1
-  elsif wincheck == "computer_won"
-    computer += 1
+# present the winner of the match
+def ultimate_winner(user, comp)
+  if user > comp
+    "user"
   else
-    tie += 1
+    "computer"
   end
-  puts "User: #{user}"
-  puts "Computer: #{computer}"
 end
 
 user = 0
@@ -67,27 +60,27 @@ loop do
   computer_choice = VALID_CHOICES.sample
 
   prompt("You chose: #{choice}. Computer chose: #{computer_choice}")
-
-
-  #display_result(choice, computer_choice)
+  
+   
 
   if display_result(choice, computer_choice) == "user_won"
     user += 1
   elsif display_result(choice, computer_choice) == "computer_won"
     computer += 1
   end
+  
 
   puts "User: #{user}"
   puts "Computer: #{computer}"
 
-
-
   prompt("Do you want to play again?")
   answer = gets.chomp
-  tally(display_result(choice, computer_choice))
+  #tally(display_result(choice, computer_choice))
   break unless answer.downcase.start_with?('y')
-  #puts "EMPTY LINE"
-  #puts tally(display_result(choice, computer_choice))
+  break if user == 5 || computer == 5
 end
 
-prompt("Thank you for playing, good bye!")
+
+ultimate_winner(user, computer)
+
+prompt("Thank you for playing, the winner of this game is the #{ultimate_winner(user, computer)}!")
