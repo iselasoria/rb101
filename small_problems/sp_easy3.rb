@@ -73,12 +73,18 @@ end
 
 #Q7 Write a method thatretuns an array that contains every other element in an array that is passed in as an arg.
 # the values in the returned list should be those values that are in the 1st, 3rd, 5th and so on elements of an array.
-def oddities()
-
+def oddities(myarr)
+  newarr = []
+  myarr.each_with_index do |item, index| 
+    next if index % 2 != 0
+    newarr << item
+  end
+  newarr
 end
 
-myarr = [1,2,3,4,5,6]
+puts oddities([1,2,3,4,5,6])
+#puts oddities([2,3,4,5,6])
 
-myarr.each do 
-  |item| puts item
-end 
+#Q8 Write a method that returns true if the string passed as an argument is a palindrome, false otherwise.
+# A palindrome reads the same forward and backward. For this exercise, case matters as does punctuation and spaces.
+
