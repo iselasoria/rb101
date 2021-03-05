@@ -1,18 +1,19 @@
 VALID_CHOICES = %w(rock paper scissors lizard spock)
+WINNING_SCORE = 5
+WINNING_MOVES = {
+  rock: ['scissors', 'lizard'],
+  paper: ['rock', 'spock'],
+  scissors: ['lizard', 'paper'],
+  lizard: ['paper', 'spock'],
+  spock: ['scissors', 'rock']
+}
 
 def prompt(message)
   puts("=> #{message}")
 end
 
 def win?(player, comp)
-  scores = {
-    rock: ['scissors', 'lizard'],
-    paper: ['rock', 'spock'],
-    scissors: ['lizard', 'paper'],
-    lizard: ['paper', 'spock'],
-    spock: ['scissors', 'rock']
-  }
-  if scores[player.to_sym].include? comp.to_sym.to_s
+  if WINNING_MOVES[player.to_sym].include? comp.to_sym.to_s
     true
   else
     false
@@ -22,13 +23,28 @@ end
 def display_result(player, computer)
   if win?(player, computer)
     prompt("You won!")
-    "user_won"
   elsif win?(computer, player)
     prompt("Computer won!")
-    "computer_won"
   else
     prompt("It's a tie!")
+  end
+end
+
+def results_counter(player, computer)
+  if win?(player, computer)
+    "user_won"
+  elsif win?(computer, player)
+    "computer_won"
+  else
     "tie"
+  end
+end
+
+def play_again?(answer)
+  if answer.downcase.start_with?('y')
+    true
+  else
+    false
   end
 end
 
@@ -41,6 +57,10 @@ def ultimate_winner(user, comp)
   end
 end
 
+prompt("Welcome to the rock, paper, lizard, spock game. \
+You'll play against the computer and whoever reaches a score  \
+of five first will have won the match. Good luck!")
+puts
 user = 0
 computer = 0
 loop do
@@ -57,20 +77,22 @@ loop do
   computer_choice = VALID_CHOICES.sample
 
   prompt("You chose: #{choice}. Computer chose: #{computer_choice}")
+  display_result(choice, computer_choice)
 
-  if display_result(choice, computer_choice) == "user_won"
+  if results_counter(choice, computer_choice) == "user_won"
     user += 1
-  elsif display_result(choice, computer_choice) == "computer_won"
+  elsif results_counter(choice, computer_choice) == "computer_won"
     computer += 1
   end
 
   puts "User: #{user}"
   puts "Computer: #{computer}"
+  break if user == WINNING_SCORE || computer == WINNING_SCORE
 
   prompt("Do you want to play again?")
   answer = gets.chomp
-  break unless answer.downcase.start_with?('y')
-  break if user == 5 || computer == 5
+  break unless play_again?(answer)
+  system("clear")
 end
 
 ultimate_winner(user, computer)
