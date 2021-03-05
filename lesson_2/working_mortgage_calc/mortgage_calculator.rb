@@ -6,18 +6,17 @@ def prompt(message)
   puts "=> #{message}"
 end
 
-def validamount?(amount)
-  amount.to_i.to_s == amount && amount.to_i > 20000
-  amount.to_i
+def valid_amount?(amount)
+  amount.to_i.to_s == amount && amount.to_i > 0
 end
 
 def validtimeframe?(timeframe)
-  timeframe.to_i.to_s == timeframe &&
-    (timeframe.to_i >= 7 && timeframe.to_i <= 30)
+  timeframe.to_i.to_s == timeframe && (timeframe.to_i > 0)
 end
 
-def validrate?(myrate)
-  (myrate.to_i.to_s == myrate && myrate.to_i > 0) || (myrate.to_f.to_s == myrate && myrate.to_f > 0)
+def valid_rate?(myrate)
+  (myrate.to_i.to_s == myrate && myrate.to_i > 0) ||
+    (myrate.to_f.to_s == myrate && myrate.to_f > 0)
 end
 
 def monthly_rate(apruser)
@@ -36,7 +35,7 @@ loop do
     prompt(MESSAGES['money_needed'])
     borrowed = gets().chomp()
 
-    if validamount?(borrowed)
+    if valid_amount?(borrowed)
       break
     else
       prompt(MESSAGES['invalid_num'])
@@ -58,7 +57,7 @@ loop do
   loop do
     prompt(MESSAGES['apr'])
     apr_raw = gets().chomp()
-    if validrate?(apr_raw)
+    if valid_rate?(apr_raw)
       break
     else
       prompt(MESSAGES['invalid_apr'])
@@ -77,12 +76,18 @@ loop do
   Calculating your monthly mortgage.")
   sleep(2)
 
-  prompt("You can expect to \
-  pay $#{monthly_payment(borrowed, monthly_rate(apr_raw), months).round(2)} per month.")
+  month_cost = monthly_payment(
+    borrowed,
+    monthly_rate(apr_raw),
+    months
+  ).round(2)
+
+  prompt("You can expect to pay: #{month_cost} per month.")
 
   prompt(MESSAGES['again'])
   another = gets().chomp()
   break unless another.downcase().start_with?('y')
+  system('clear')
 end
 
 prompt(MESSAGES['thanks_comeagain'])
