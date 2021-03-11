@@ -28,11 +28,37 @@ p short_long_short('rosa', 'monzon')
 #1901 - 2000 comprise the 20th century.
 
 def century(year)
-  if year / 100 == 0 || year % 10 == 0
-    puts "#{year % 100} + th" 
-  else
-    puts "we'll figure this out later"
-  end 
+  century = year / 100 + 1
+  century -= 1 if year % 100 == 0
+  century.to_s + century_suffix(century)
 end 
 
-century(1990)
+def century_suffix(century)
+  return 'th' if [11,12,13].include?(century % 100)
+  last_digit = century % 10
+
+  case last_digit
+  when 1 then 'st'
+  when 2 then 'nd'
+  when 3 then 'rd'
+  else 'th'
+  end
+end
+
+#Q3 In gregorian calendar, leap years occur in every year that is evenly
+#divisible by 4, unless the year is also divisible by 100. If it divisible by
+#100 it is not a leap year, unless it is evenly divisible by 400.
+
+def leap_year?(year)
+  if year % 400 == 0
+    true
+  elsif year % 100 == 0
+    false
+  else
+    year % 4 == 0
+  end
+end
+
+p leap_year?(2020)
+
+#Q4

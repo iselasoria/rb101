@@ -88,3 +88,14 @@ puts oddities([1,2,3,4,5,6])
 #Q8 Write a method that returns true if the string passed as an argument is a palindrome, false otherwise.
 # A palindrome reads the same forward and backward. For this exercise, case matters as does punctuation and spaces.
 
+def palindrome?(string)
+  string == string.reverse
+end
+
+puts palindrome?("isela")
+puts palindrome?("racecar")
+
+#Q9 Write another method that returns rtue if the string passed as arg is a palindrome, false otherwise.
+#This time, however, your method should be case-insensitive, and it should ignore all non-alphanumeric chars.
+#feel free to stack on to the palindrome? method from before?
+
