@@ -61,4 +61,39 @@ end
 
 p leap_year?(2020)
 
-#Q4
+#Q4 update the previous code to find leap years in julian calendar
+# where leap years are divisible by 4
+def leap_year?(year)
+  if year < 1752 && year % 4 == 0
+    true
+  elsif year % 400 == 0
+    true
+  elsif year % 100 == 0
+    false
+  else
+    year % 4 == 0
+  end
+end
+
+p leap_year?(2020)
+
+#Q5 Write a method thats searches for all multiple of 3 and 5 that lie
+#between 1 and some other number, and then computes the sum of those multiples.
+#For instance, if the supplied number is 20, the result should be
+#98(3 + 5 + 6 + 9 + 10 + 12 + 15 + 18 + 20). You can assum numbers are
+# greater than 1.
+
+def multiple?(number, divisor)
+  number % divisor == 0
+end
+
+def multisum(max_value)
+  sum = 0
+  1.upto(max_value) do |number|
+    if multiple?(number, 3) || multiple?(number, 5)
+      sum += number
+    end
+  end
+  sum
+end
+
