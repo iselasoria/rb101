@@ -97,3 +97,43 @@ def multisum(max_value)
   sum
 end
 
+#Q6 Write a method that takes an array of numbers, and returns an array with the same number of elements
+# and each element has the running total from the original array.
+
+myarr = [2,4,1,7]
+
+def running_total(myarr)
+  sum = 0
+  myarr.map do |num|
+    sum += num
+  end
+end
+
+p running_total(myarr)
+
+#Q7 The String#to_i method converts a string to numeric chars to an integer. String.to_i and the Integer constructor 
+#Integer() behave similarly. In this exercise, you will create a method that does the same thing.
+#Write a method that takes a string of digits amd returns the appropriate number as integer. You may not use any of the
+#methods mentioned above.
+#For now, don't worry about the leading + or - signs, nor shoold y worry about invalid chars, assum all chars will be
+#numeric. You may not use any of the standard conversion methods available in Ruby to convert a string to number, such as 
+#string.to_i, Integer(), etc. Your method should do this the old fasioned way and calculate the result by analyzing the chars
+#in the string.
+DIGITS = {
+  '0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4,
+  '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9
+}
+
+
+
+def string_to_integer(strnum)
+  digits = strnum.chars.map {|char| DIGITS[char]}
+
+  value = 0
+  digits.each {|digit| value = 10 * value + digit}
+  value
+end
+
+p string_to_integer('234')
+
+
